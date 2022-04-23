@@ -1,0 +1,12 @@
+html,
+body {
+	--inputTextColor: rgb(181, 181, 181);
+	--inputBackColor: #242628;
+	--taskButtonBackColor: #595e62;
+	--textColor: white;
+	--taskContainerBackColor: #404448;
+	--taskContainerHover: #1f1f1f;
+	--textCompleted: rgb(104, 104, 104);
+	--border: gray;
+	--filterText: #444448;
+}

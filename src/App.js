@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import "./App.css";
+import "./stylesheets/variables.css";
+
+import NavBar from "./components/NavBar";
+
+import EventList from "./components/Date/eventList";
+
+import ToDoList from "./components/toDoList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [app, setApp] = useState("todo");
+
+	const showToDo = () => {
+		setApp("todo");
+	};
+
+	const showEvent = () => {
+		setApp("event");
+	};
+
+	const showPomodoro = () => {
+		setApp("pomodoro");
+	};
+
+	return (
+		<div className="app-container">
+			<NavBar showToDo={showToDo} showEvent={showEvent} showPomodoro={showPomodoro} />
+
+			<div id="to-do" className={`${app === "todo" ? "tasks-app" : "tasks-app hidden-app"}`}>
+				<div className="main-tasks">
+					<div class="title">
+						<h1>TO-DO</h1>
+					</div>
+					<ToDoList />
+				</div>
+			</div>
+			<div id="eventApp" className={`${app === "event" ? "events-app" : "events-app hidden-app"}`}>
+				<div className="main-tasks">
+					<div class="title">
+						<h1>EVENTS</h1>
+					</div>
+					<EventList />
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default App;
